@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Momomeal</string>
+    <string name="bnv_home_title">홈</string>
+    <string name="bnv_chatroom_title">채팅</string>
+    <string name="bnv_mypage_title">마이페이지</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
