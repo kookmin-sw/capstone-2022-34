@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
@@ -34,7 +33,6 @@ public class CheckModifyMemberService {
     }
 
     @Test
-//    @Rollback(value = false)
     void createAccount() {
         Members member1 = new Members();
         Members member2 = new Members();
@@ -101,19 +99,5 @@ public class CheckModifyMemberService {
         this.memberReviewService.addReview(memberReview2);
         List<MemberReview> result = this.memberReviewService.getReviewList(member.getUser_id());
         System.out.println("result size : " + result.size());
-    }
-
-    @Test
-    @Rollback(value = false)
-    public void update_User_Info(){
-        Long userId = Long.valueOf(1);
-        String email = "change@email.com";
-        String realName = "Yeon";
-        Boolean check = memberService.updateUser(userId, email, realName);
-        if(check == true){
-            return;
-        }else{
-            Assertions.fail("업데이트 실패");
-        }
     }
 }
