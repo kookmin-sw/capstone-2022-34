@@ -51,11 +51,11 @@ public class Members {
             cascade = {CascadeType.ALL}
     )
     private List<MemberReview> memberReview;
-    @OneToMany(
-            mappedBy = "member",
-            cascade = {CascadeType.ALL}
-    )
-    private List<Menu> menuList = new ArrayList();
+//    @OneToMany(
+//            mappedBy = "member",
+//            cascade = {CascadeType.ALL}
+//    )
+//    private List<Menu> menuList = new ArrayList();
 
     public Members() {
     }
@@ -160,10 +160,6 @@ public class Members {
         this.memberReview = memberReview;
     }
 
-//    public void setRecommendMenu(final List<RecommendMenu> recommendMenu) {
-//        this.recommendMenu = recommendMenu;
-//    }
-
     public Long getUser_id() {
         return this.user_id;
     }
@@ -208,9 +204,6 @@ public class Members {
         return this.memberReview;
     }
 
-//    public List<RecommendMenu> getRecommendMenu() {
-//        return this.recommendMenu;
-//    }
 
     public String toString() {
         Long var10000 = this.getUser_id();
