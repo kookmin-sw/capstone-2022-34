@@ -5,59 +5,48 @@
 
 package com.capstone.momomeal.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "menu")
 public class Menu {
     @Id
     @GeneratedValue
-    @Column(
-            name = "menu_id"
-    )
+    @Column(name = "menu_id")
     private Long id;
     private String name;
-    @OneToMany(
-            mappedBy = "menu"
-    )
-    private List<RecommendMenu> recommendMenu = new ArrayList();
 
-    public Menu() {
-    }
+    private Category category;
 
-    public void addRecommendMenu(RecommendMenu recommendMenu) {
-        this.recommendMenu.add(recommendMenu);
-        recommendMenu.setMenu(this);
-    }
+    @Column(name = "x_value")
+    private Double x_value;
 
-    public Long getId() {
-        return this.id;
-    }
+    @Column(name = "y_value")
+    private Double y_value;
 
-    public String getName() {
-        return this.name;
-    }
+    @CreatedDate
+    private LocalDateTime createDate;
 
-    public List<RecommendMenu> getRecommendMenu() {
-        return this.recommendMenu;
-    }
+    @LastModifiedDate
+    private LocalDateTime updateDate;
 
-    public void setId(final Long id) {
-        this.id = id;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Members member;
 
-    public void setName(final String name) {
-        this.name = name;
-    }
+//    @OneToMany(mappedBy = "menu")
+//    private List<RecommendMenu> recommendMenu = new ArrayList();
 
-    public void setRecommendMenu(final List<RecommendMenu> recommendMenu) {
-        this.recommendMenu = recommendMenu;
-    }
+    public Menu() {}
+
 }
